@@ -1,0 +1,40 @@
+
+<div class="container">
+    <div class="form-row">
+        <%= form_for(:summary_page ,:url => summary_page_path) do |f| %>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="col-sm-4 col-xs-12">
+                    <%= f.label :completion_time, "From" %>
+                    <div class='input-group date' >
+                        <%= f.text_field :start_date, {:class => "form-control fm-txt nonempty", id: "start-date", value: @start_date, 'data-rule-required' => true} %>
+                        <span class="input-group-addon date-icon">
+                            <span class="fa fa-calendar"></span>
+                        </span>
+                    </div> 
+                </div><!-- Form Row Ends -->
+                <div class="col-sm-4 col-xs-12">
+                    <%= f.label :end_date, "To" %>
+                    <div class='input-group date' >
+                        <%= f.text_field :end_date, {:class => "form-control fm-txt nonempty", id: "end-date", value: @end_date, 'data-rule-required' => true} %>
+                        <span class="input-group-addon date-icon">
+                            <span class="fa fa-calendar"></span>
+                        </span>
+                    </div> 
+                </div><!-- Form Row Ends -->
+                <div class = "col-sm-4 col-xs-12">
+                       <p>&nbsp;</p>
+                    <%= f.submit "Update", :class => "btn btn-primary btn-md" %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+     
+    </div>
+    <div id="report_graphs">
+        <%= render "summay_report" %>
+    </div>
+</div>
+
+
+

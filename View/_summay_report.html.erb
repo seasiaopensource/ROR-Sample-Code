@@ -1,0 +1,62 @@
+
+<div class="form-row">
+<div class="row">
+    <div class="col-sm-5 col-md-5">
+        <div class="chart-outer">
+            <div id="pie-invioce" class="chart-legend"></div>
+            <div class="pie-outer">
+                <%= content_tag 'canvas', '', id: 'invoice', width: '400', height: '400', data: {orders: @invoice_count[0]} %>
+            </div>
+            <div class="chart-content">
+                <h5>Total Invoices: <%=@invoice_count[1] %></h5>
+                <h5>Paid Invoices: <%=@invoice_count[0][0] %></h5>
+                <h5>Pending Invoices: <%= @invoice_count[0][1]%></h5>
+                <h5>Partial Paid Invoices: <%= @invoice_count[0][2]%></h5>
+                <h5>Early Payment Invoices:  <%= @invoice_count[0][3]%></h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5 col-md-5 col-md-offset-2">
+         <div class="chart-outer">
+            <div id="pie-amount" class="chart-legend"></div>
+            <div class="pie-outer">
+                <%= content_tag 'canvas', '', id: 'invoice_amount_pie', width: '400', height: '400', data: {amount: @pie_data} %>
+            </div>
+             <div class="chart-content">
+                <h5>Total Invoice Amount: <%= currency_symbol + @total_amount.to_s%></h5>
+                <h5>Paid Amount: <%= currency_symbol + @pie_data[0].to_s %></h5>
+                <h5>Pending Amount: <%= currency_symbol + @pie_data[1].to_s %></h5>
+                <h5>Early Payment Required:  <%= currency_symbol + @invoice_amount[2].to_s %></h5>
+            </div> 
+        
+        </div>
+    </div>  
+</div>
+</div>
+
+
+<div class="form-row">
+<div class="row">
+
+    <div class="col-sm-5 col-md-5">
+        <div class="chart-outer">
+            <div id="bar-invioce" class="chart-legend"></div>
+            <div class="bar-chart-outer">
+                 <%= content_tag 'canvas', '', id: 'orders_chart', width: '400', height: '400', data: {labels: @labels, 
+                    paid: @paidCount, pending: @pendingCount, partial:@partialCount, early:@earlyCount} %>
+            </div>       
+        </div>
+    </div>
+
+    <div class="col-sm-5 col-md-5 col-md-offset-2">
+        <div class="chart-outer">
+            <div id="bar-amount" class="chart-legend"></div>
+            <div class="bar-chart-outer">
+                <%= content_tag 'canvas', '', id: 'amount_chart', width: '400', height: '400', data: {labels: @labels, 
+                  total: @totalInvioceSum, paid: @paidInvioceSum, pending: @pendingInvioceSum, early:@earlyInvioceSum} %>
+            </div>
+        </div>
+     </div>
+</div>
+</div>
+
